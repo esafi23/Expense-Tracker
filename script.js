@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("expenses", JSON.stringify(expenses));
     }
 
+    // DOM Manipulation, The app updates the list immediately when a new expense is added.
+
     function renderExpenses() {
         expenseList.innerHTML = "";
         expenses.forEach((expense, index) => {
@@ -27,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         updateTotal();
     }
+    // Form Validation, The app prevents incorrect input like empty values or negative numbers.
 
     expenseForm.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -45,12 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
         renderExpenses();
         expenseForm.reset();
     });
-
+        //Event Handling → JavaScript listens for clicks on buttons to add or delete expenses.
     expenseList.addEventListener("click", (event) => {
         if (event.target.classList.contains("delete-btn")) {
             const index = event.target.dataset.index;
             expenses.splice(index, 1);
-            saveToLocalStorage();
+            saveToLocalStorage();   // Local Storage.
+
             renderExpenses();
         }
     });
